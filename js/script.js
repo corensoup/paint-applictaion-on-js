@@ -70,10 +70,13 @@ function getCordOnCanvas(evt) {
         y: evt.clientY - rect.top
     }
 }
+let clickUpCounter = 0
 function mouseUpLogic(evt) {
     canvas.onmousemove = null
     document.onmouseup = null
-    saveDataToLocalStorage(ctx)
+    if (clickUpCounter++ % 10 === 0) {
+        saveDataToLocalStorage(ctx)
+    } else clickUpCounter = 0
 }
 function mouseMoveLogic(evt) {
     const currentPos = {
@@ -102,12 +105,12 @@ function mouseMoveLogic(evt) {
 }
 
 
-//TODO: Анимация цветов
+//TODO: Анимация цветов!!!!!!!!!!!!!!!!!!!!!!!!!!
 //TODO: Перевод цветов в словарь !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //TODO: Оптимизировать рисование фигур !!!!!!!!!!!!!!!!!!!!!!!!
 //TODO: Настроить размер канваса !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //TODO: LocalStorage для рисунков !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //TODO: Скачивание рисунка !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: Поменять курсор
-//TODO: Поменять иконки
+//TODO: Поменять иконки !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //TODO: Сtrl + Z
+//TODO: Поменять курсор

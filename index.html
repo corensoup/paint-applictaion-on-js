@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="./style.css">
     <title>Paint</title>
 </head>
@@ -11,13 +11,17 @@
 <div id="paint">
     <div id="tool-panel">
         <div class="tool-panel-item"><i class="fa fa-download" data-tool="download" aria-hidden="true"></i></div>
-        <div class="tool-panel-item"><i class="fa fa-eraser" data-tool="eraser" aria-hidden="true"></i></div>
         <div class="tool-panel-item"><i class="fa fa-paint-brush" data-tool="brush" aria-hidden="true"></i></div>
-        <div class="tool-panel-item"><i class="fa fa-arrows-h" data-tool="line" aria-hidden="true"></i></div>
-        <div class="tool-panel-item"><i class="fa fa-square" data-tool='rectangle' aria-hidden="true"></i></div>
-        <div class="tool-panel-item"><i class="fa fa-play" data-tool='triangle' aria-hidden="true"></i></div>
-        <div class="tool-panel-item"><i class="fa fa-circle-o" data-tool='circle' aria-hidden="true"></i></div>
-        <div class="tool-panel-item"><i class="fa fa-bitbucket" data-tool='fill' aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-eraser" data-tool="eraser" aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fas fa-fill-drip" data-tool='fill' ></i></div>
+        <div class="tool-panel-item"><i class="far fa-window-minimize" data-tool="line"></i></div>
+        <div class="tool-panel-item"><i class="far fa-square" data-tool="rectangle"></i></div>
+        <div class="tool-panel-item">
+            <svg data-tool="triangle" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="27" height="27"
+            viewBox="0 0 226 226"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g fill="#ffffff"><path d="M186.94908,51.79167l-73.94908,128.0855l-73.94908,-128.0855h147.89817M190.18842,32.95833h-154.37683c-6.13496,0 -11.62487,3.16871 -14.69,8.48442c-3.06513,5.31571 -3.06512,11.65312 0,16.96412l77.18842,133.68842c3.06512,5.311 8.55504,8.48442 14.69,8.48442c6.13496,0 11.62488,-3.16871 14.69,-8.48442l77.18842,-133.69312c3.06513,-5.311 3.06513,-11.65313 0,-16.96413c-3.06512,-5.311 -8.55975,-8.47971 -14.69,-8.47971z"></path></g></g></svg>
+        </div>
+        <div class="tool-panel-item"><i class="far fa-circle" data-tool='circle' aria-hidden="true"></i></div>
         <div class="tool-panel-item tool-size">
             <i class="fa fa-circle" aria-hidden="true"></i>
             <div id="panel-size">
