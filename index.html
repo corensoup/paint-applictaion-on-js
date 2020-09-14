@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Paint</title>
+</head>
+<body>
+<div id="paint">
+    <div id="tool-panel">
+        <div class="tool-panel-item"><i class="fa fa-download" data-tool="download" aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-eraser" data-tool="eraser" aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-paint-brush" data-tool="brush" aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-arrows-h" data-tool="line" aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-square" data-tool='rectangle' aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-play" data-tool='triangle' aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-circle-o" data-tool='circle' aria-hidden="true"></i></div>
+        <div class="tool-panel-item"><i class="fa fa-bitbucket" data-tool='fill' aria-hidden="true"></i></div>
+        <div class="tool-panel-item tool-size">
+            <i class="fa fa-circle" aria-hidden="true"></i>
+            <div id="panel-size">
+                <input type="range" value="10" min="10" max="30" />
+            </div>
+        </div>
+    </div>
+    <div>
+    <div id="color-panel">
+        <div class="color-panel-item" data-color="black"></div>
+        <div class="color-panel-item" data-color="green"></div>
+        <div class="color-panel-item" data-color="orange"></div>
+        <div class="color-panel-item" data-color="red"></div>
+        <div class="color-panel-item" data-color="pink"></div>
+        <div class="color-panel-item" data-color="white"></div>
+        <div class="color-panel-item" data-color="cyan"></div>
+        <div class="color-panel-item" data-color="purple"></div>
+        <div class="color-panel-item" data-color="royalblue"></div>
+        <div class="color-panel-item" data-color="magenta"></div>
+    </div>
+    <canvas id="canvas"></canvas>
+    </div>
+</div>
+<script src="./js/variables.js"></script>
+<script src="./js/tools.js"></script>
+<script src="./js/changeSize.js"></script>
+<script src="./js/utils.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+    background: rgb(32, 32, 32);
+}
+#paint {
+    width: 550px;
+    display: flex;
+}
+#canvas {
+    background: white;
+    display: block;
+}
+#color-panel {
+    width: 500px;
+    display: flex;
+}
+.color-panel-item {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.color-panel-item[data-color="white"] {
+    background: white;
+}
+.color-panel-item[data-color="black"] {
+    background: black
+}
+.color-panel-item[data-color="green"] {
+    background: green;
+}
+.color-panel-item[data-color="orange"] {
+    background: orange;
+}
+.color-panel-item[data-color="red"] {
+    background: red;
+}
+.color-panel-item[data-color="purple"] {
+    background: purple;
+}
+.color-panel-item[data-color="pink"] {
+    background: pink;
+}
+.color-panel-item[data-color="cyan"] {
+    background: cyan;
+}
+.color-panel-item[data-color="royalblue"] {
+    background: royalblue;
+}
+.color-panel-item[data-color="magenta"] {
+    background: magenta;
+}
+#tool-panel {
+    display: flex;
+    flex-direction: column;
+}
+.tool-panel-item {
+    width:50px;
+    height: 50px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    position: relative;
+}
+
+.tool-panel-item i {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.tool-size > i {
+    font-size: 10px;
+}
+
+#panel-size {
+    transform: rotate(90deg);
+    position: absolute;
+    top: 92px;
+    cursor: pointer;
+    display: none;
+}
+
+#panel-size > input {
+    width: 83px
+}
+
+.active {display: block !important}
