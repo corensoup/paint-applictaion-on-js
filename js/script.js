@@ -1,22 +1,18 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
-const colorPanel = document.querySelector('#color-panel')
-const toolPanel = document.querySelector('#tool-panel')
-
 canvas.height = HEIGHT
 canvas.width = WIDTH
 
-let clickedCord = {}
-let savedData = {}
-
-const rect = canvas.getBoundingClientRect()
 ctx.lineCap = 'round'
+ctx.lineWidth = size
 
-fillCanvasToWhite(ctx, canvas)
+fillCanvasToWhite()
+loadDataFromLocalStorage()
 
-loadDataFromLocalStorage(ctx)
-
+document.addEventListener('keydown', evt => {
+    if (evt.keyCode == 90 && evt.ctrlKey) makeUndoFromStack()
+})
 canvas.onmousedown = evt => {
     clickedCord = getCordOnCanvas(evt)
     canvas.onmousemove = evt => mouseMoveLogic(evt)
@@ -24,13 +20,14 @@ canvas.onmousedown = evt => {
 }
 colorPanel.onclick = evt => {
     if(!!evt.target.dataset.color) {
+        changeActiveColor(evt.target)
         color = evt.target.dataset.color
         ctx.strokeStyle = color
     }
 }
 toolPanel.onclick = evt => {
-    ctx.lineWidth = size
-    switch(evt.target.dataset.tool) {
+    if(!!evt.target.dataset.tool) changeActiveTool(evt.target)
+    switch(evt.target.dataset.tool) {    
         case 'brush':
             tool = 'brush'
             break;
@@ -38,8 +35,8 @@ toolPanel.onclick = evt => {
             tool = 'line'
             break;
         case 'eraser':
-            fillCanvasToWhite(ctx, canvas)
-            saveDataToLocalStorage(ctx)
+            fillCanvasToWhite()
+            saveDataToLocalStorage()
             break;
         case 'rectangle':
             tool = 'rectangle'
@@ -53,10 +50,13 @@ toolPanel.onclick = evt => {
         case 'fill':
             tool = 'fill'
             canvas.onclick = evt => {
-                floodFill(evt.clientX - rect.left, evt.clientY - rect.top, hexToRGBcolors[color])
-                canvas.onclick = null
+                if(tool !== 'fill') {
+                    canvas.onclick = null
+                } else {
+                    floodFill(evt.clientX - rect.left, evt.clientY - rect.top, hexToRGBcolors[color])
+                    saveDataToLocalStorage()
+                }
             }
-            saveDataToLocalStorage(ctx)
             break;
         case 'download':
             downloadImageFromCanvas()
@@ -70,13 +70,11 @@ function getCordOnCanvas(evt) {
         y: evt.clientY - rect.top
     }
 }
-let clickUpCounter = 0
 function mouseUpLogic(evt) {
     canvas.onmousemove = null
     document.onmouseup = null
-    if (clickUpCounter++ % 10 === 0) {
-        saveDataToLocalStorage(ctx)
-    } else clickUpCounter = 0
+    undoStackPush()
+    saveDataToLocalStorage(ctx)
 }
 function mouseMoveLogic(evt) {
     const currentPos = {
@@ -90,7 +88,7 @@ function mouseMoveLogic(evt) {
             brushTool(currentPos)
             break;
         case 'line':
-            drawShapes('line', savedData, clickedCord, currentPos )
+            drawShapes('line', savedData, clickedCord, currentPos)
             break;
         case 'rectangle':
             drawShapes('rectangle', savedData, clickedCord, currentPos)
@@ -103,14 +101,3 @@ function mouseMoveLogic(evt) {
             break;
     }
 }
-
-
-//TODO: Анимация цветов!!!!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: Перевод цветов в словарь !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: Оптимизировать рисование фигур !!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: Настроить размер канваса !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: LocalStorage для рисунков !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: Скачивание рисунка !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: Поменять иконки !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//TODO: Сtrl + Z
-//TODO: Поменять курсор

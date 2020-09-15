@@ -1,9 +1,23 @@
+const colorPanel = document.querySelector('#color-panel')
+const toolPanel = document.querySelector('#tool-panel')
+const toolPanelItems = document.querySelectorAll('.tool-panel-item')
+const colorPanelItems = document.querySelectorAll('.color-panel-item')
+
 const HEIGHT = document.documentElement.clientHeight - 100
 const WIDTH = document.documentElement.clientWidth - 100
 
 let color = 'black'
 let tool = 'brush'
 let size = 10
+
+let clickedCord = {}
+let savedData = {}
+
+const undoStack = []
+let step_undo = -1;
+
+const rect = canvas.getBoundingClientRect()
+
 
 const hexToRGBcolors = {
     'white' : {r: 255, g: 255, b: 255},
